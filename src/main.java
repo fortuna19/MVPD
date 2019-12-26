@@ -1,8 +1,7 @@
-package test;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 
 public class main {
     public static void main(String[] args) throws IOException {
@@ -25,6 +24,7 @@ public class main {
         System.out.println("2. National Geographic");
         System.out.println("3. FX");
 
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int channel = Integer.parseInt(reader.readLine());
 
@@ -41,9 +41,11 @@ public class main {
             redirect_url = "";
         }
 
-        System.out.println("Enter the code");
-        reg_code = reader.readLine();
+        System.out.println();
+        System.out.println("Enter the code (Register does not matter)");
+        reg_code = reader.readLine().toUpperCase();
 
+        System.out.println();
         System.out.println("Please choose a TV provider:");
         System.out.println("1. Grande");
         System.out.println("2. Spectrum");
@@ -110,7 +112,6 @@ public class main {
 
 
 
-
        /* while (true) {
             int channel = Integer.parseInt(reader.readLine());
             if (channel < 1 || channel > 3) {
@@ -121,18 +122,28 @@ public class main {
 
         }*/
 
+
+
+
+
         System.out.println();
         System.out.println("Link is:");
         System.out.println(url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url);
 
-        System.out.println();
-        System.out.println("Login is:");
-        System.out.println(login);
-        System.out.println();
-        System.out.println("Password is:");
-        System.out.println(password);
+
+        if(!login.isEmpty()) {
+            System.out.println();
+            System.out.println("Login is:");
+            System.out.println(login);
+            System.out.println();
+            System.out.println("Password is:");
+            System.out.println(password);
+        }
 
 
     }
+
+
+
 
 }

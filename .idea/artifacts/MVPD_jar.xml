@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MVPD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MVPD_jar</output-path>
+    <root id="archive" name="MVPD.jar">
+      <element id="module-output" name="MVPD" />
+    </root>
+  </artifact>
+</component>
