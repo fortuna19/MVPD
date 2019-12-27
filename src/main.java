@@ -10,13 +10,13 @@ public class main {
     public static void main(String[] args) throws IOException {
 
         String url = "https://sp.auth.adobe.com/api/v1/authenticate?";
-        String requestor_id = "dtci";
-        String mso_id = "";//"Grande";
-        String domain_name = "";// = "ngtvfeqa.com";
-        String reg_code = "";//"NRLHZ6R";
+        String requestor_id = "";
+        String mso_id = "";
+        String domain_name = "";
+        String reg_code = "";
         String noflash = "true";
         String no_iframe = "true";
-        String redirect_url = "";//https%3A//ngtvfeqa.com/activate-congrats";
+        String redirect_url = "";
 
         String login = "";
         String password = "";
@@ -32,16 +32,19 @@ public class main {
         int channel = Integer.parseInt(reader.readLine());
 
         if (channel == 1) {
-            domain_name = "abc.go.com";
-            redirect_url = "";
+            domain_name = "abc.com";
+            redirect_url = "https%3A//abc.com/activate-congrats";
+            requestor_id = "ABC";
         }
         if (channel == 2) {
             domain_name = "ngtvfeqa.com";
             redirect_url = "https%3A//ngtvfeqa.com/activate-congrats";
+            requestor_id = "dtci";
         }
         if (channel == 3) {
             domain_name = "fxtvfeqa.com";
-            redirect_url = "";
+            redirect_url = "https%3A//fxtvfeqa.com/activate-congrats";
+            requestor_id = "dtci";
         }
 
         System.out.println();
@@ -58,61 +61,60 @@ public class main {
         System.out.println("6. Direct TV");
         System.out.println("7. RCN");
         System.out.println("8. Hulu");
-        System.out.println("9. AT&T");
+        System.out.println("9. AT&T (temporarily is not working)");
         System.out.println("10. The Walt Disney Company");
 
         int tvProvider = Integer.parseInt(reader.readLine());
         if (tvProvider == 1) {
             mso_id = "Grande";
-            login = "srtyutruityi";
-            password = "rtyurrrry";
+            login = "tve11prim";
+            password = "tve11prim";
         }
         if (tvProvider == 2) {
             mso_id = "Spectrum";
-            login = "";
-            password = "";
+            login = "TestAccGoldtd6@charter.net";
+            password = "P@ssw0rd";
         }
         if (tvProvider == 3) {
             mso_id = "Cox";
-            login = "";
-            password = "";
+            login = "whorley"; //access to 1 channel
+            password = "reins808";
         }
         if (tvProvider == 4) {
             mso_id = "Cablevision";
-            login = "";
-            password = "";
+            login = "research1001";
+            password = "support1001";
         }
         if (tvProvider == 5) {
             mso_id = "Verizon";
-            login = "";
-            password = "";
+            login = "telcouser1";
+            password = "Emergence";
         }
         if (tvProvider == 6) {
             mso_id = "DTV";
-            login = "";
-            password = "";
+            login = "denm_test5@directv.com";
+            password = "p@ssword";
         }
         if (tvProvider == 7) {
             mso_id = "RCN";
-            login = "";
-            password = "";
+            login = "dtci_all_pass";
+            password = "dtci!RCN1";
         }
         if (tvProvider == 8) {
             mso_id = "Hulu";
-            login = "";
-            password = "";
+            login = "huluTVE_linetv@hulu.com";
+            password = "hulu1234";
         }
         if (tvProvider == 9) {
             mso_id = "ATTOTT";
-            login = "";
-            password = "";
+            login = "att8970@att.net";
+            password = "test_572019";
         }
         if (tvProvider == 10) {
             mso_id = "WatchABC";
             login = "";
             password = "";
         }
-
 
 
        /* while (true) {
@@ -125,25 +127,9 @@ public class main {
 
         }*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         System.out.println();
-        System.out.println("Link is:");
+        //System.out.println("Link is:");
         String newLink = url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url;
-        //System.out.println(url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url);
-        System.out.println(newLink);
 
         java.net.URI uri;
         try {
