@@ -1,7 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+
 
 public class main {
     public static void main(String[] args) throws IOException {
@@ -126,9 +129,33 @@ public class main {
 
 
 
+
+
+
+
+
+
+
+
+
+
         System.out.println();
         System.out.println("Link is:");
-        System.out.println(url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url);
+        String newLink = url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url;
+        //System.out.println(url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url);
+        System.out.println(newLink);
+
+        java.net.URI uri;
+        try {
+            uri = new URI(newLink);
+            java.awt.Desktop.getDesktop().browse(uri);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }  catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+
 
 
         if(!login.isEmpty()) {
