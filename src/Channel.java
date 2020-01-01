@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Channel {
     static String domain_name;
     static String redirect_url;
@@ -36,19 +40,30 @@ public class Channel {
     }
 
 
-    public static void chooseChannel(int ch) {
-        switch (ch) {
-            case 1:
-                Channel abc = new Channel("abc.com", "https%3A//abc.com/activate-congrats", "ABC");
-                break;
-            case 2:
-                Channel ng = new Channel("ngtvfeqa.com", "https%3A//ngtvfeqa.com/activate-congrats", "dtci");
-                break;
-            case 3:
-                Channel fx = new Channel("fxtvfeqa.com", "https%3A//fxtvfeqa.com/activate-congrats", "dtci");
-                break;
-            default:
-                System.out.println("Choose valid item");
+    public static void chooseChannel() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int channel = Integer.parseInt(reader.readLine());
+
+        boolean notExit = true;
+        while (notExit) {
+            switch (channel) {
+                case 1:
+                    Channel abc = new Channel("abc.com", "https%3A//abc.com/activate-congrats", "ABC");
+                    notExit = false;
+                    break;
+                case 2:
+                    Channel ng = new Channel("ngtvfeqa.com", "https%3A//ngtvfeqa.com/activate-congrats", "dtci");
+                    notExit = false;
+                    break;
+                case 3:
+                    Channel fx = new Channel("fxtvfeqa.com", "https%3A//fxtvfeqa.com/activate-congrats", "dtci");
+                    notExit = false;
+                    break;
+                default:
+                    System.out.println("Choose valid item");
+                    channel = Integer.parseInt(reader.readLine());
+                    break;
+            }
         }
     }
 }

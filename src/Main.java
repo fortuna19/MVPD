@@ -32,21 +32,15 @@ public class Main {
 
         Menu.showChannels(); //Вывод на экран меню для выбора одного из трех каналов
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String s = reader.readLine();
-        int channel = Integer.parseInt(s);
-
-        Channel.chooseChannel(channel);
+        Channel.chooseChannel();
 
         Menu.enterCode();//Вывод на экран меню для ввода кода
 
-        reg_code = reader.readLine().toUpperCase();//Приведение кода к верхнему регистру
-        Main.setReg_code(reg_code);
+        enterReg_code();// Ввод кода
 
         Menu.showTvProviders(); //Вывод на экран меню для выбора списка из 10 ТВ провайдеров
 
-        int tvProvider = Integer.parseInt(reader.readLine());
-        Provider.chooseProvider(tvProvider);
+        Provider.chooseProvider();
 
         System.out.println();
 
@@ -85,6 +79,11 @@ public class Main {
             System.out.println("Password is:");
             System.out.println(Provider.getPassword());
         }
+    }
+
+    public static void enterReg_code() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        setReg_code(reader.readLine().toUpperCase());//Приведение кода к верхнему регистру
     }
 }
 
