@@ -49,14 +49,17 @@ public class Channel {
             switch (channel) {
                 case 1:
                     Channel abc = new Channel("abc.com", "https%3A//abc.com/activate-congrats", "ABC");
+                    allMethods();
                     notExit = false;
                     break;
                 case 2:
                     Channel ng = new Channel("ngtvfeqa.com", "https%3A//ngtvfeqa.com/activate-congrats", "dtci");
+                    allMethods();
                     notExit = false;
                     break;
                 case 3:
                     Channel fx = new Channel("fxtvfeqa.com", "https%3A//fxtvfeqa.com/activate-congrats", "dtci");
+                    allMethods();
                     notExit = false;
                     break;
                 default:
@@ -65,5 +68,18 @@ public class Channel {
                     break;
             }
         }
+    }
+    public static void allMethods() throws IOException {
+        Menu.enterCode();//Вывод на экран меню для ввода кода
+        Main.enterReg_code();// Ввод кода
+        Menu.showTvProviders(); //Вывод на экран меню для выбора списка из 10 ТВ провайдеров
+        Provider.chooseProvider();
+        Main.openInBrowser(Main.resultLink());
+        //System.out.println(Main.resultLink());
+        Main.showLogin();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 }

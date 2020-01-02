@@ -6,10 +6,11 @@ public class Menu {
 
     public static void showChannels() {
         System.out.println("Please choose a channel:");
-        System.out.println("*******************MVPD***********************");
+        //System.out.println("*******************MVPD***********************");
         System.out.println("1. ABC");
         System.out.println("2. National Geographic");
         System.out.println("3. FX");
+        /*
         System.out.println("******************OneID***********************");
         System.out.println("4. ABC QA Env.");
         System.out.println("5. NG  QA Env.");
@@ -17,6 +18,7 @@ public class Menu {
         System.out.println("7. ABC Prod Env.");
         System.out.println("8. NG  Prod Env.");
         System.out.println("9. FX  Prod Env.");
+         */
 
     }
 
@@ -38,5 +40,12 @@ public class Menu {
         System.out.println("8. Hulu");
         System.out.println("9. AT&T (temporarily is not working)");
         System.out.println("10. The Walt Disney Company");
+    }
+
+    public static void repeat(){
+        System.out.println("Enter with MVPD provider one more time?");
+        System.out.println("1. Yes");
+        System.out.println("2. Exit");
+
     }
 }

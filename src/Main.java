@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static java.lang.Runtime.getRuntime;
+
 public class Main {
     static String noflash = "true";
     static String no_iframe = "true";
@@ -12,9 +14,11 @@ public class Main {
     public static void setReg_code(String value) {
         reg_code = value;
     }
+
     public static String getReg_code() {
         return reg_code;
     }
+
     public static String getUrl() {
         String url = "https://sp.auth.adobe.com/api/v1/authenticate?";
         return url;
@@ -23,35 +27,50 @@ public class Main {
     public static String getNoflash() {
         return noflash;
     }
+
     public static String getNo_iframe() {
         return no_iframe;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) throws IOException {
+        boolean notExit = true;
+        while (notExit) {
+            Menu.showChannels();
+            Channel.chooseChannel();
 
-        Menu.showChannels(); //Вывод на экран меню для выбора одного из трех каналов
+            Menu.repeat();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            int repeat = Integer.parseInt(reader.readLine());
+            switch (repeat) {
+                case 1:
+                    cls();
+                    break;
+                default:
+                    notExit = false;
+                    break;
+            }
+        }
 
-        Channel.chooseChannel();
+        //Menu.showChannels(); //Вывод на экран меню для выбора одного из трех каналов
 
-        Menu.enterCode();//Вывод на экран меню для ввода кода
+        //Channel.chooseChannel();
 
-        enterReg_code();// Ввод кода
+        //Menu.enterCode();//Вывод на экран меню для ввода кода
 
-        Menu.showTvProviders(); //Вывод на экран меню для выбора списка из 10 ТВ провайдеров
+        //enterReg_code();// Ввод кода
 
-        Provider.chooseProvider();
+        //Menu.showTvProviders(); //Вывод на экран меню для выбора списка из 10 ТВ провайдеров
+
+        //Provider.chooseProvider();
 
         System.out.println();
 
-        //String newLink = url + "requestor_id=" + requestor_id + "&" + "mso_id=" + mso_id + "&" + "domain_name=" + domain_name + "&" + "reg_code=" + reg_code + "&" + "noflash=" + noflash + "&" + "no_iframe=" + no_iframe + "&" + "redirect_url=" + redirect_url;
-
-        /*OOP*/
-        String newLink = Main.getUrl() + "requestor_id=" + Channel.getRequestor_id() + "&" + "mso_id=" + Provider.getMso_id() + "&" + "domain_name=" + Channel.getDomain_name() + "&" + "reg_code=" + Main.getReg_code() + "&" + "noflash=" + Main.getNoflash() + "&" + "no_iframe=" + Main.getNo_iframe() + "&" + "redirect_url=" + Channel.getRedirect_url();
-        System.out.println(newLink);
+        //String newLink = Main.getUrl() + "requestor_id=" + Channel.getRequestor_id() + "&" + "mso_id=" + Provider.getMso_id() + "&" + "domain_name=" + Channel.getDomain_name() + "&" + "reg_code=" + Main.getReg_code() + "&" + "noflash=" + Main.getNoflash() + "&" + "no_iframe=" + Main.getNo_iframe() + "&" + "redirect_url=" + Channel.getRedirect_url();
+        //System.out.println(newLink);
         //openInBrowser(newLink);//Открываем линку в дефолтном браузере
 
-        showLogin();
+        //showLogin();
 
     }
 
@@ -70,8 +89,7 @@ public class Main {
     public static void showLogin() {
         if (Provider.getLogin() == null) {
             System.out.println("Login and password are not set for chosen TV provider");
-        }
-        else {
+        } else {
             System.out.println();
             System.out.println("Login is:");
             System.out.println(Provider.getLogin());
@@ -84,6 +102,19 @@ public class Main {
     public static void enterReg_code() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         setReg_code(reader.readLine().toUpperCase());//Приведение кода к верхнему регистру
+    }
+
+    public static String resultLink() {
+        String newLink = Main.getUrl() + "requestor_id=" + Channel.getRequestor_id() + "&" + "mso_id=" + Provider.getMso_id() + "&" + "domain_name=" + Channel.getDomain_name() + "&" + "reg_code=" + Main.getReg_code() + "&" + "noflash=" + Main.getNoflash() + "&" + "no_iframe=" + Main.getNo_iframe() + "&" + "redirect_url=" + Channel.getRedirect_url();
+        return newLink;
+    }
+
+    public static void cls() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception E) {
+            System.out.println(E);
+        }
     }
 }
 
