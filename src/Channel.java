@@ -32,42 +32,46 @@ public class Channel {
     }
 
 
-    public Channel(String domain_name, String redirect_url, String requestor_id) {
+    public Channel(String domain_name, String redirect_url, String requestor_id) throws IOException {
         setDomain_name(domain_name);
         setRedirect_url(redirect_url);
         setRequestor_id(requestor_id);
+        allMethods();
 
     }
 
 
     public static void chooseChannel() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int channel = Integer.parseInt(reader.readLine());
+        int channel;
 
-        boolean notExit = true;
-        while (notExit) {
-            switch (channel) {
-                case 1:
-                    Channel abc = new Channel("abc.com", "https%3A//abc.com/activate-congrats", "ABC");
-                    allMethods();
-                    notExit = false;
-                    break;
-                case 2:
-                    Channel ng = new Channel("ngtvfeqa.com", "https%3A//ngtvfeqa.com/activate-congrats", "dtci");
-                    allMethods();
-                    notExit = false;
-                    break;
-                case 3:
-                    Channel fx = new Channel("fxtvfeqa.com", "https%3A//fxtvfeqa.com/activate-congrats", "dtci");
-                    allMethods();
-                    notExit = false;
-                    break;
-                default:
-                    System.out.println("Choose valid item");
-                    channel = Integer.parseInt(reader.readLine());
-                    break;
+        try {
+            channel = Integer.parseInt(reader.readLine());
+            boolean notExit = true;
+            while (notExit) {
+                switch (channel) {
+                    case 1:
+                        Channel abc = new Channel("abc.com", "https%3A//abc.com/activate-congrats", "ABC");
+                        notExit = false;
+                        break;
+                    case 2:
+                        Channel ng = new Channel("ngtvfeqa.com", "https%3A//ngtvfeqa.com/activate-congrats", "dtci");
+                        notExit = false;
+                        break;
+                    case 3:
+                        Channel fx = new Channel("fxtvfeqa.com", "https%3A//fxtvfeqa.com/activate-congrats", "dtci");
+                        notExit = false;
+                        break;
+                    default:
+                        System.out.println("Choose valid item");
+                        channel = Integer.parseInt(reader.readLine());
+                        break;
+                }
             }
-        }
+        } catch (NumberFormatException nfe) {
+            System.out.println("Entered data should be numeric. Please choose a channel one more time");
+            chooseChannel();
+            }
     }
     public static void allMethods() throws IOException {
         Menu.enterCode();//Вывод на экран меню для ввода кода

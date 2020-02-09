@@ -104,11 +104,13 @@ public class Main {
         setReg_code(reader.readLine().toUpperCase());//Приведение кода к верхнему регистру
     }
 
+    //Генерим финальную линку
     public static String resultLink() {
         String newLink = Main.getUrl() + "requestor_id=" + Channel.getRequestor_id() + "&" + "mso_id=" + Provider.getMso_id() + "&" + "domain_name=" + Channel.getDomain_name() + "&" + "reg_code=" + Main.getReg_code() + "&" + "noflash=" + Main.getNoflash() + "&" + "no_iframe=" + Main.getNo_iframe() + "&" + "redirect_url=" + Channel.getRedirect_url();
         return newLink;
     }
 
+    //Метод для очистки окна консоли
     public static void cls() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
