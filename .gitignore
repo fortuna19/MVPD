@@ -1,6 +1,1 @@
 # Project exclude paths
-/out/
-/.idea/
-/src/META-INF/
-MVPD.iml
-.gitignore

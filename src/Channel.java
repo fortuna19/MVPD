@@ -64,7 +64,7 @@ public class Channel {
                         break;
                     default:
                         System.out.println("Choose valid item");
-                        channel = Integer.parseInt(reader.readLine());
+                        //channel = Integer.parseInt(reader.readLine());
                         break;
                 }
             }
